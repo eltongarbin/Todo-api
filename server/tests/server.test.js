@@ -17,7 +17,7 @@ const todos = [{
 
 beforeEach((done) => {
   Todo.remove({}).then(() => {
-    return Todo.insertMany(todos)
+    return Todo.insertMany(todos);
   }).then(() => done());
 });
 
@@ -30,7 +30,7 @@ describe('POST /todos', () => {
       .send({text})
       .expect(200)
       .expect((res) => {
-          expect(res.body.text).toBe(text);
+        expect(res.body.text).toBe(text);
       })
       .end((err, res) => {
         if (err) {
@@ -97,7 +97,7 @@ describe('GET /todos/:id', () => {
 
   it('should return 404 for non-object ids', (done) => {
     request(app)
-      .get(`/todos/123abc`)
+      .get('/todos/123abc')
       .expect(404)
       .end(done);
   });
@@ -136,7 +136,7 @@ describe('DELETE /todos/:id', () => {
 
   it('should return 404 if object id is invalid', (done) => {
     request(app)
-      .delete(`/todos/123abc`)
+      .delete('/todos/123abc')
       .expect(404)
       .end(done);
   });
@@ -155,9 +155,9 @@ describe('PATCH /todos/:id', () => {
       .send(todo)
       .expect(200)
       .expect((res) => {
-          expect(res.body.todo.text).toBe(todo.text);
-          expect(res.body.todo.completed).toBe(true);
-          expect(res.body.todo.completedAt).toBeA('number');
+        expect(res.body.todo.text).toBe(todo.text);
+        expect(res.body.todo.completed).toBe(true);
+        expect(res.body.todo.completedAt).toBeA('number');
       })
       .end(done);
   });
@@ -174,9 +174,9 @@ describe('PATCH /todos/:id', () => {
       .send(todo)
       .expect(200)
       .expect((res) => {
-          expect(res.body.todo.text).toBe(todo.text);
-          expect(res.body.todo.completed).toBe(false);
-          expect(res.body.todo.completedAt).toNotExist();
+        expect(res.body.todo.text).toBe(todo.text);
+        expect(res.body.todo.completed).toBe(false);
+        expect(res.body.todo.completedAt).toNotExist();
       })
       .end(done);
   });
