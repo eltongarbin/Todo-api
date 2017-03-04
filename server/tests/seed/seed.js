@@ -1,8 +1,8 @@
-const {ObjectID} = require('mongodb');
+const { ObjectID } = require('mongodb');
 const jwt = require('jsonwebtoken');
 
-const {Todo} = require('./../../models/todo');
-const {User} = require('./../../models/user');
+const { Todo } = require('./../../models/todo');
+const { User } = require('./../../models/user');
 
 const userOneId = new ObjectID();
 const userTwoId = new ObjectID();
@@ -12,7 +12,7 @@ const users = [{
   password: '123456',
   tokens: [{
     access: 'auth',
-    token: jwt.sign({_id: userOneId, access: 'auth'}, process.env.JWT_SECRET).toString()
+    token: jwt.sign({ _id: userOneId, access: 'auth' }, process.env.JWT_SECRET).toString()
   }]
 }, {
   _id: userTwoId,
@@ -20,7 +20,7 @@ const users = [{
   password: 'userTwoPass',
   tokens: [{
     access: 'auth',
-    token: jwt.sign({_id: userTwoId, access: 'auth'}, process.env.JWT_SECRET).toString()
+    token: jwt.sign({ _id: userTwoId, access: 'auth' }, process.env.JWT_SECRET).toString()
   }]
 }];
 
@@ -43,7 +43,7 @@ const populateTodos = (done) => {
 };
 
 const populateUsers = (done) => {
-  User.remove({}).then(()=> {
+  User.remove({}).then(() => {
     var userOne = new User(users[0]).save();
     var userTwo = new User(users[1]).save();
 
@@ -51,4 +51,4 @@ const populateUsers = (done) => {
   }).then(() => done());
 };
 
-module.exports = {todos, populateTodos, users, populateUsers};
+module.exports = { todos, populateTodos, users, populateUsers };
