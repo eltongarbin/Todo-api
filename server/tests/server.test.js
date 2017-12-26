@@ -225,7 +225,7 @@ describe('PATCH /todos/:id', () => {
 });
 
 describe('GET /users/me', () => {
-  it('should return user if authenticate', (done) => {
+  it('should return user if authenticated', (done) => {
     request(app)
       .get('/users/me')
       .set('x-auth', users[0].tokens[0].token)
@@ -237,7 +237,7 @@ describe('GET /users/me', () => {
       .end(done);
   });
 
-  it('should return 401 if not authenticate', (done) => {
+  it('should return 401 if not authenticated', (done) => {
     request(app)
       .get('/users/me')
       .expect(401)
