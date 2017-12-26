@@ -60,7 +60,7 @@ app.get('/todos/:id', authenticate, async (req, res) => {
   
     res.send({ todo });
   } catch (e) {
-    res.status(400).send()
+    res.status(400).send();
   }
 });
 
@@ -83,7 +83,7 @@ app.delete('/todos/:id', authenticate, async (req, res) => {
 
     res.send({ todo });
   } catch (e) {
-    res.status(400).send()
+    res.status(400).send();
   }
 });
 
@@ -151,7 +151,7 @@ app.post('/users/login', async (req, res) => {
 
     res.header('x-auth', token).send(user);
   } catch (e) {
-    res.status(400).send()
+    res.status(400).send();
   }
 });
 
@@ -160,7 +160,7 @@ app.delete('/users/me/token', authenticate, async (req, res) => {
     await req.user.removeToken(req.token);
     res.status(200).send();
   } catch (e) {
-    res.status(400).send()
+    res.status(400).send();
   }
 });
 
